@@ -1,56 +1,51 @@
-Requirements:
--------------------------
-Generic:
-* Digibyte >=6.14.2
-* Python >=2.6
-* Twisted >=10.0.0
-* python-argparse (for Python =2.6)
+P2pool installation with pypy -- Windows
+--------------------------------------
+On Windows, pypy is only supported via the Windows Subsystem for Linux (WSL). P2pool on pypy on WSL is much faster than P2pool on
+CPython on native Windows. To install WSL, first follow the steps outlined here:
 
-Linux:
-* sudo apt-get install python-zope.interface python-twisted python-twisted-web
-* sudo apt-get install python-argparse # if on Python 2.6
+https://msdn.microsoft.com/en-us/commandline/wsl/install_guide
 
-Windows:
-* Install Python 2.7: http://www.python.org/getit/
-* Install Twisted: http://twistedmatrix.com/trac/wiki/Downloads
-* Install Zope.Interface: http://pypi.python.org/pypi/zope.interface/3.8.0
-* Install python win32 api: http://sourceforge.net/projects/pywin32/files/pywin32/Build%20218/
-* Install python win32 api wmi wrapper: https://pypi.python.org/pypi/WMI/#downloads
-* Unzip the files into C:\Python27\Lib\site-packages
+Once you've done that, run bash and follow the rest of the steps below.
 
-Official wiki:
--------------------------
-https://en.bitcoin.it/wiki/P2Pool
+P2pool installation with pypy -- Linux and Windows
+-------------------------------------------------
+Copy and paste the following commands one line at a time into a bash shell in order to install p2pool on Windows or Linux.
 
-Alternate web frontend:
--------------------------
-* https://github.com/hardcpp/P2PoolExtendedFrontEnd
 
-Notes for Digibyte:
-=========================
-In order to run Digibyte nodes you must first install the digibyte_subsidy & python_skein_hash modules:
--------------------------
-    git submodule init
-    git submodule update
-    cd digibyte_subsidy
-    sudo python setup.py install
-    cd ..
-    cd python_skein_hash
-    sudo python setup.py install
+
+sudo apt-get update
+sudo apt-get install pypy pypy-dev pypy-setuptools gcc build-essential git
+
+wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo pypy
+sudo rm setuptools-*.zip
+
+wget https://pypi.python.org/packages/source/z/zope.interface/zope.interface-4.1.3.tar.gz#md5=9ae3d24c0c7415deb249dd1a132f0f79
+tar zxf zope.interface-4.1.3.tar.gz
+cd zope.interface-4.1.3/
+sudo pypy setup.py install
+cd ..
+sudo rm -r zope.interface-4.1.3*
+
+wget https://pypi.python.org/packages/source/T/Twisted/Twisted-15.4.0.tar.bz2
+tar jxf Twisted-15.4.0.tar.bz2
+cd Twisted-15.4.0
+sudo pypy setup.py install
+cd ..
+sudo rm -r Twisted-15.4.0*
+
+git clone https://github.com/farsider350/p2pool-dgb-skein
+cd p2pool-dgb-skein
+cd digibyte_subsidy
+sudo pypy setup.py install
+cd ..
+cd python_skein_hash
+sudo pypy setup.py install
+
+
+
 
 Running P2Pool:
 -------------------------
 To use P2Pool, you must be running your own local myriadcoind. For standard configurations, using P2Pool should be as simple as:
 
     python run_p2pool.py --net digibyte
-
-To make your node accessible from the internet, open the following ports on your router (both the worker port and peer-2-peer port please!): Worker Port = 5029; Peer-2-Peer Port = 5028
-
-Run for additional options:
-
-python run_p2pool.py --help
-
-Donations towards further development:
--------------------------
-BTC: 1HNeqi3pJRNvXybNX4FKzZgYJsdTSqJTbk 17Vq6qwfE1epzsgEfSw81pQX3gXo9ZN4ET
-DGB: DTvN7hB8dXEVLNjvEkCaEm34AXb8LpxmKM
