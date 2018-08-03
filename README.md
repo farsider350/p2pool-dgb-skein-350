@@ -48,4 +48,4 @@ Running P2Pool:
 -------------------------
 To use P2Pool, you must be running your own local myriadcoind. For standard configurations, using P2Pool should be as simple as:
 
-    python run_p2pool.py --net digibyte
+    pypy run_p2pool.py --net digibyte
