@@ -1,0 +1,14 @@
+server = 1
+rpcuser = 
+rpcpassword = 
+algo = skein
+listenonion = 0
+listen = 1
+daemon = 1
+gen = 1
+onlynet = IPv4
+rpcworkqueue = 32
+rpcthreads = 96
+rpcallowip = 127.0.0.1
+rpcport = 14025
+port = 12027
