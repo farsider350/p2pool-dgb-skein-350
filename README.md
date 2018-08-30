@@ -1,3 +1,6 @@
+Please read this file in raw format for best install results:
+https://raw.githubusercontent.com/farsider350/p2pool-dgb-skein-350/master/README.md
+
 P2pool installation with pypy -- Windows
 --------------------------------------
 On Windows, pypy is only supported via the Windows Subsystem for Linux (WSL). P2pool on pypy on WSL is much faster than P2pool on
@@ -33,19 +36,53 @@ sudo pypy setup.py install
 cd ..
 sudo rm -r Twisted-15.4.0*
 
-git clone https://github.com/farsider350/p2pool-dgb-skein
-cd p2pool-dgb-skein
+git clone https://github.com/farsider350/p2pool-dgb-skein-350.git
+cd p2pool-dgb-skein-350
 cd digibyte_subsidy
 sudo pypy setup.py install
 cd ..
 cd python_skein_hash
 sudo pypy setup.py install
-
-
-
+    
+	
+digibyte.conf
+	server=1
+	rpcuser=user
+	rpcpassword=anything long
+	algo=skein
+	listenonion=0
+	listen=1
+	daemon=1
+	gen=0
+	onlynet=IPv4
+	rpcworkqueue=32
+	rpcthreads=96
+	rpcallowip=127.0.0.1
+	rpcport=14025
+	port=12027
+	deprecatedrpc=accounts
 
 Running P2Pool:
 -------------------------
 To use P2Pool, you must be running your own local myriadcoind. For standard configurations, using P2Pool should be as simple as:
 
+	For Zen Server
     pypy run_p2pool.py --net digibyte
+    
+	For Ilsawa's Server
+	pypy run_p2pool.py --net digibyteils
+	
+To make your node accessible from the internet, open the following ports on your router (both the worker port and peer-2-peer port please!): Worker Port = 5029; Peer-2-Peer Port = 5028
+
+Run for additional options:
+
+pypy run_p2pool.py --help
+
+For GPU mining you can use cgminer:
+
+CG-Miner - https://github.com/farsider350/p2pool-dgb-skein-350/raw/master/cgskein.zip
+
+Donations towards further development:
+-------------------------
+BTC: 12nQSWig35Wue2AGjiGM5F2LUvSwq8uQqS
+DGB: DG21rdLGRR2sMZDA1pXCrR93dKwjSz8yHo
