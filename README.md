@@ -82,6 +82,8 @@ For GPU mining you can use cgminer:
 
 CG-Miner - https://github.com/farsider350/p2pool-dgb-skein-350/raw/master/cgskein.zip
 
+https://triplezen.tk
+
 Donations towards further development:
 -------------------------
 BTC: 12nQSWig35Wue2AGjiGM5F2LUvSwq8uQqS
