@@ -15,7 +15,7 @@ PERSIST=True
 WORKER_PORT=5029
 BOOTSTRAP_ADDRS='crypto.office-on-the.net p2p-spb.xyz siberia.mine.nu'.split(' ')
 ANNOUNCE_CHANNEL='#p2pool'
-VERSION_CHECK = lambda v: None if 6160400 <= v else 'DigiByte version too old. Upgrade to 6.16.4 or newer!'
+VERSION_CHECK = lambda v: None if 6160500 <= v else 'DigiByte version too old. Upgrade to 6.16.5 or newer!'
 VERSION_WARNING = lambda v: None
 SOFTFORKS_REQUIRED = set(['nversionbips', 'csv', 'segwit'])
 MINIMUM_PROTOCOL_VERSION = 1600
