@@ -63,7 +63,7 @@ def is_segwit_activated(version, net):
     segwit_activation_version = getattr(net, 'SEGWIT_ACTIVATION_VERSION', 0)
     return version >= segwit_activation_version and segwit_activation_version > 0
 
-DONATION_SCRIPT = '522102ed2a267bb573c045ef4dbe414095eeefe76ab0c47726078c9b7b1c496fee2e6221023052352f04625282ffd5e5f95a4cef52107146aedb434d6300da1d34946320ea52ae'.decode('hex')
+DONATION_SCRIPT = '522102d92234777b63f6dbc0a0382bbcb54e0befb01f6a4b062122fadab044af6c06882103b27bbc5019d3543586482a995e8f57c6ad506a4dafa6bf7cc89533b8dcb2df1b2102911ff87e792ec75b3a30dc115dfd06ec27c93b27034aa8e7cefbee6477e5d03453ae'.decode('hex')
 
 class BaseShare(object):
     VERSION = 0
@@ -526,18 +526,13 @@ class PreSegwitShare(BaseShare):
     VOTING_VERSION = 32
     SUCCESSOR = NewShare
 
-class MiddleShare(BaseShare):
+class Share(BaseShare):
     VERSION = 17
     VOTING_VERSION = 17
     SUCCESSOR = NewShare
 
-class Share(BaseShare):
-    VERSION = 16
-    VOTING_VERSION = 16
-    SUCCESSOR = MiddleShare # could we just jump straight to NewShare? Probably, but untested.
 
-
-share_versions = {s.VERSION:s for s in [NewShare, PreSegwitShare, MiddleShare, Share]}
+share_versions = {s.VERSION:s for s in [NewShare, PreSegwitShare, Share]}
 
 class WeightsSkipList(forest.TrackerSkipList):
     # share_count, weights, total_weight
